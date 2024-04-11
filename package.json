@@ -1,0 +1,21 @@
+{
+  "name": "node-js-final-project",
+  "version": "1.0.0",
+  "description": "In this repo an online shop website has been deploy with NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/RMNProgrammer/node-js-final-project"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "website",
+    "online-shop"
+  ],
+  "author": "Mohammad Amin Ramezani",
+  "license": "MIT"
+}
