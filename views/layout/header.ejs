@@ -1,0 +1,25 @@
+<header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <h1 class="logo">Online Shop</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" class="<%= (path === '/') ? 'active' : '' %>">Home</a></li>
+          <li><a href="/about" class="<%= (path === '/about') ? 'active' : '' %>">About</a></li>
+          <li><a href="/shop" class="<%= (path === '/shop') ? 'active' : '' %>">Shop</a></li>
+          <li><a href="/contact" class="<%= (path === '/contact') ? 'active' : '' %>">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="auth-controller">
+        <a class="btn btn-outline-danger btn-space" href="/">Sign up</a>
+        <a class="btn btn-outline-primary" href="/">Login</a>
+        <!--<a class="btn btn-outline-danger">Logout</a>-->
+      </div>
+      
+    </div>
+</header>

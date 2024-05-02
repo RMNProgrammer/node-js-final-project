@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('layout/head') -%>
+</head>
+
+<body>
+
+  <%- include('layout/header') -%>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+      <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="100" class="">Online Shop</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Buy the ones you like more easily.</p>
+        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+          <a href="/shop" class="btn-get-started">Buy now</a>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Counts Section -->
+    <section id="counts" class="section counts">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+    
+        <div class="row gy-4">
+    
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Users</p>
+            </div>
+          </div><!-- End Stats Item -->
+    
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Products</p>
+            </div>
+          </div><!-- End Stats Item -->
+    
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Categories</p>
+            </div>
+          </div><!-- End Stats Item -->
+    
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Products in carts</p>
+            </div>
+          </div><!-- End Stats Item -->
+    
+        </div>
+
+      </div>
+    
+    </section><!-- /Counts Section -->
+
+    <!-- products Section -->
+    <section id="products" class="products section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Products</h2>
+        <p class="">Best Products</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="d-flex-center row">
+
+          <% products.forEach(product => { %>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch product-card" data-aos="zoom-in" data-aos-delay="100">
+              <div class="product-item">
+                <div class="zoom">
+                  <img src='<%= product.image %>' class="img-fluid" alt='<%= product.name %>' >
+                </div>
+                
+                <div class="product-content">
+                  <% id = ( product.category.id * 100 ) + product.id %>
+                  <h3><a href="/shop/product-0<%= id %>"><%= product.name %></a></h3>
+
+                  <p class="category"><a href="/category/<%= product.category.slug %>">from <%= product.category.name %></a></p>
+                  <div class="d-flex flex-center mb-3">
+                    <p class="star"><i class="bi bi-star-fill" style="color: gold;"></i>&nbsp;&nbsp;<%= product.star %></p>
+                    <p class="price"><%= product.price %> T</p>
+                  </div>
+
+                  <ul class="properties">
+                    <% product.properties.forEach(propery => { %>
+                      <li>- <%= propery %></li>
+                    <% }) %>
+                  </ul>
+                </div>
+              </div>
+            </div> <!-- End product Item-->
+          <% }) %>
+
+        </div>
+
+      </div>
+
+    </section><!-- /products Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+      <div class="container">
+
+        <div class="cards gy-4">
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\cash_on_delivery.webp" alt="cash-on-delivery"/>
+              <h3>With cash on delivery</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\seven-days-return.png" alt="seven-days-return-guarantee"/>
+              <h3>With a one-week return guarantee</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\express-delivery.png" alt="express-delivery"/>
+              <h3>With express delivery</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\timely-delivery.png" alt="specific-time-delivery"/>
+              <h3>By specifying the time of receiving the product</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\mobile-insurance.png" alt="free-mobile-laptop-insurance"/>
+              <h3>Free mobile and laptop insurance</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+          <div data-aos="fade-up" data-aos-delay="100">
+            <div class="features-item">
+              <img src="\assets\img\icons\247-support.jpg" alt="24/7-support"/>
+              <h3>24/7 support</h3>
+            </div>
+          </div><!-- End Feature Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+  </main>
+
+  <!-- footer -->
+  <%- include('layout/footer') -%>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- scripts -->
+  <%- include('layout/scripts-connector') -%>
+
+</body>
+
+</html>

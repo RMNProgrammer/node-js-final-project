@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../layout/head') -%>
+</head>
+
+<body onload={MyMessage()}>
+
+  <%- include('../layout/header') -%>
+  
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1><%= categories[product.category_id - 1].name %> category</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li class="current"><%= product.name %><li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- products product Details Section -->
+    <section id="product-details" class="product-details section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <h3><%= product.name %></h3>
+          <div class="col-lg-8">
+            <% if( product.color && product.color.length > 1 ){ %>
+              <div class="coloring">
+                  <% product.color.forEach(item => { %>
+                    <a 
+                      href="?color=<%= item %>" 
+                      style=<%= `background-color:${item};` %>  
+                      class=<%= product.availableColor == item ? 'active' : '' %> 
+                    ></a>
+                  <% }) %> 
+              </div>
+            <% } %>
+            <img src='<%= product.image %>' class="img-fluid" alt='<%= product.name %>' >
+          </div>
+        
+          <div class="col-lg-4">
+
+            <div class="product-info d-flex justify-content-between align-items-center">
+              <h5>Dimensions</h5>
+              <p><%= product.height %> * <%= product.wide %> * <%= product.depth %> cm</p>
+            </div>
+
+            <% if ( product.weight ) { %>
+              <div class="product-info d-flex justify-content-between align-items-center">
+                <h5>Weight</h5>
+                <p><%= product.weight %> Kg</p>
+              </div>
+            <% } %>
+            <% if ( product.capacity ) { %>
+              <div class="product-info d-flex justify-content-between align-items-center">
+                <h5>Capacity</h5>
+                <p><%= product.capacity %> L</p>
+              </div>
+            <% } %>
+
+            <% if( product.color && product.color.length == 1 ){ %>
+              <div class="product-info d-flex justify-content-between align-items-center">
+                <h5>Color</h5>
+                <p><%= product.color %></p>
+              </div>
+            <% } %>
+
+            <ul class="description d-flex">
+              <h5>Possibilities</h5>
+                <% product.possibilities.split(' - ').forEach(item => {  %>
+                  <li> - <%= item %></li>
+                <% }) %>
+            </ul>
+
+            <div class="product-info d-flex justify-content-between align-items-center">
+              <h5>Star</h5>
+              <p><i class="bi bi-star-fill" style="color: gold;"></i>&nbsp;&nbsp;<%= product.star == 0 ? 'No rate' : product.star %></p>
+            </div>
+
+            <div class="product-info d-flex justify-content-between align-items-center">
+              <h5>Price</h5>
+              <p><%= product.price %></p>
+            </div>
+            
+          </div> 
+
+        </div>
+
+      </div>
+
+    </section><!-- /products product Details Section -->
+
+  </main>
+
+  <!-- footer -->
+  <%- include('../layout/footer') -%>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- scripts -->
+  <%- include('../layout/scripts-connector') -%>
+
+</body>
+
+</html>
