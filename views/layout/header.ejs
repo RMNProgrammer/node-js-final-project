@@ -16,9 +16,13 @@
       </nav>
 
       <div class="auth-controller">
-        <a class="btn btn-outline-danger btn-space" href="/">Sign up</a>
-        <a class="btn btn-outline-primary" href="/">Login</a>
-        <!--<a class="btn btn-outline-danger">Logout</a>-->
+        <% if(user){ %>
+          <a class="btn btn-outline-danger btn-space" href="/logout">Logout</a>
+          <a class="btn btn-outline-primary" href="/cart">Cart</a>
+        <% } else { %>
+          <a class="btn btn-outline-danger btn-space" href="/sign-up">Sign up</a>
+          <a class="btn btn-outline-primary" href="/login">Login</a>
+        <% } %>
       </div>
       
     </div>

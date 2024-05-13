@@ -13,16 +13,16 @@ const Rate = db.define('rates',
       type: DataTypes.STRING
     },
     star: {
-        type: DataTypes.NUMBER
+      type: DataTypes.NUMBER
     },    
     profile: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING
     },
     date: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE
     },
     description: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING
     },
   },{
     timestamps: false

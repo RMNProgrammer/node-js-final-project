@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                line-height: 1.4;
+                font-family: sans-serif;      
+                -ms-text-size-adjust: 100%;
+                background-color: #3498db;
+                -webkit-text-size-adjust: 100%;
+                -webkit-font-smoothing: antialiased;
+            }         
+
+            .body { width: 100%; }
+
+            h1 {
+                margin: 0;
+                font-size: 25px;
+                color: #e74c3c;          
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 18px;
+                font-family: sans-serif; 
+                text-transform: capitalize;
+            }
+
+            p {
+                margin: 0;
+                font-size: 15px;
+                text-align: center;
+                margin-bottom: 18px;
+                font-family: sans-serif;
+            }
+
+            a {
+                color: #3498db;
+                text-decoration: underline;
+            }
+
+            .preheader {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                max-width: 0;
+                max-height: 0;
+                display: none;
+                overflow: hidden;
+                visibility: hidden;
+                color: transparent;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            .container {
+                width: 580px;
+                padding: 10px;
+                display: block;
+                max-width: 580px;
+                margin: 0 auto !important;  
+            }
+
+            .content {
+                padding: 10px;
+                display: block;
+                margin: 0 auto;
+                max-width: 580px;
+                box-sizing: border-box;  
+            }
+
+            .main {
+                width: 100%;
+                border-radius: 3px;
+                background: #ffffff;
+            }
+
+            .wrapper {
+                padding: 10px;
+                padding-bottom: 0px;
+                box-sizing: border-box;
+            }
+
+            table td, table th {
+                padding: 8px;
+                font-size: 14px;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            .user-cart {
+                margin-bottom: 18px;
+                border-collapse: collapse;
+            }
+
+            .user-cart th, .user-cart td {
+                border: 1px solid #ddd;
+            }
+
+            .user-cart th {
+                background-color: #f2f2f2;
+            }
+
+            img {
+                width: 120px;
+                border: none;
+                -ms-interpolation-mode: bicubic;
+            }
+
+            .footer {
+                width: 100%;
+                clear: both;
+                margin-top: 10px;
+                text-align: center;
+            }        
+        
+            .footer td, .footer p, .footer a {
+                color: #ecf0f1;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .content-block {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }        
+        
+            .powered-by a { text-decoration: none; }
+
+            @media only screen and (max-width: 620px) {
+                table[class=body] h1 {
+                    margin-top: 18px !important;
+                }
+
+                table[class=body] p, table[class=body] td, table[class=body] a {
+                    font-size: 18px !important;
+                }
+
+                table[class=body] .wrapper {
+                    padding: 10px !important;
+                }
+            
+                table[class=body] .content {
+                    padding: 0 !important;
+                }
+
+                table[class=body] .container {
+                    padding: 0 !important;
+                    width: 100% !important;
+                }
+
+                table[class=body] .main {
+                    border-radius: 0 !important;
+                    border-left-width: 0 !important;
+                    border-right-width: 0 !important;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+    <table role="presentation" cellpadding="0" cellspacing="0" class="body">
+        <tr>
+            <td>&nbsp;</td>
+            <td class="container">
+                <div class="content">
+                    <table role="presentation" class="main">
+                        <tr>
+                            <td class="wrapper">
+                                <table role="presentation" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <h1><%= title %></h1>
+                                            <p><%= startWith %> </p>
+                                            <table class="user-cart" role="presentation" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>Product Name</th>
+                                                        <th>Color</th>
+                                                        <th>Price / Fee</th>
+                                                        <th>Quantity</th>
+                                                        <th>Total Price</th>
+                                                    </tr>
+                                                    <% cart.forEach(item => { %>
+                                                        <tr>
+                                                            <td><%= item.name %></td>
+                                                            <td><%= item.color %></td>
+                                                            <td><%= item.price %> T</td>
+                                                            <td><%= item.quantity %></td>
+                                                            <td><%= item.price * item.quantity %> T</td>
+                                                        </tr>
+                                                    <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <p>These products will be sent to <%= address %>.</p>
+                                            <p><%= endWith %></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="footer">
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="content-block">
+                                    <br> Don't like these emails? <a
+                                        href="/">Unsubscribe</a>.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="content-block powered-by">
+                                    Powered by Online Shop.
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</body>
+
+</html>

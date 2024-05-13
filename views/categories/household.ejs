@@ -98,6 +98,26 @@
               <h5>Price</h5>
               <p><%= product.price %></p>
             </div>
+
+            <% if(user && product.price !== 'Unknown'){ %>
+              <div class="btn-box">
+                <% if (inCart) { %>
+                  <a 
+                    class="btn btn-lg btn-outline-danger" 
+                    href="/cart/remove?categoryId=<%= product.category_id %>&productId=<%= product.id %>&color=<%= product.availableColor %>"
+                  >Remove from cart</a>
+                <% } else { %>
+                  <a 
+                    class="btn btn-lg btn-outline-warning" 
+                    href="/cart/add?categoryId=<%= product.category_id %>&productId=<%= product.id %>&color=<%= product.availableColor %>"
+                  >Add to cart</a>
+                <% } %>  
+              </div>
+            <% } else if (!user) { %>
+              <div class="alert">
+                Please login first to add the product to the shopping cart.
+              </div>
+            <% } %>
             
           </div> 
 

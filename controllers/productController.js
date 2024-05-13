@@ -1,3 +1,4 @@
+const Cart = require('../models/Cart')
 const Category = require('../models/Category')
 const MobileProduct = require('../models/MobileProduct')
 const LaptopProduct = require('../models/LaptopProduct')
@@ -22,9 +23,20 @@ const productController = async (req, res) => {
             product.color.map((item, id) => { if( product.availableColor == item ) { priceId = id } })
         }
         else if ( !product.color && !req.query.color ) { priceId = 0 }
+        const cart = req.user ? await Cart.findOne({
+            where: {
+                product_id,
+                category_id,
+                user_id: req.user.id,
+                color: product.availableColor || '-'
+            }
+        }) : undefined
         product.dataValues.price = Number.isInteger(priceId) ? `${prices[priceId]} T` : 'Unknown'
         res.render(`categories/${pages[category_id - 1]}`,{
             path: '/shop',
+            inCart: !!cart,
+            back: req.path,
+            user: req.user,
             product: product,
             categories: categories.map(category => {
                 return {
@@ -35,7 +47,9 @@ const productController = async (req, res) => {
         })
     }
     else {
-        res.render('error/not-found')
+        res.render('error/not-found',{
+            user: req.user
+        })
     }
 }
   

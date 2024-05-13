@@ -23,6 +23,7 @@ const categoryController = async (req, res) => {
         })
         res.render('category',{
             path: '/shop',
+            user: req.user,
             pages: categories[categoryId - 1].count / 6,
             categoryName: categoryName,
             page: req.query.page || 1,
@@ -47,7 +48,9 @@ const categoryController = async (req, res) => {
         })
     }
     else {
-        res.render('error/not-found')
+        res.render('error/not-found',{
+            user: req.user,
+        })
     }
 }
   

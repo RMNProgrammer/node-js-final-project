@@ -6,8 +6,9 @@ const get = async (req, res) => {
     const categories = await Category.findAll({})
     res.render('contact',{
         errors: [],
-        flash: req.flash(),
+        user: req.user,
         path: '/contact',
+        flash: req.flash(),
         categories: categories.map(category => {
             return {
                 name: category.name,
@@ -21,6 +22,7 @@ const post = async (req, res) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         res.render('contact',{
+            user: req.user,
             path: '/contact',
             flash: req.flash(),
             errors: errors.array(),
